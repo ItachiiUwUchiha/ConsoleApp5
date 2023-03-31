@@ -65,8 +65,9 @@ string gaderypoluki2(string clearText)
 
 
 //tekst do zaszyfrowania
-string clearText = "GADERYPOLUKI";
-//zaszyfruj uzywajac funkcji
+string clearText = "";
+Console.WriteLine("Prosze podaj tekst do zaszyfrowania: ");
+clearText = Console.ReadLine() ?? "";
 string cypherText = gaderypoluki(clearText);
 
 Console.WriteLine("Zaszyfrowany tekst (metoda 1): " + cypherText);
