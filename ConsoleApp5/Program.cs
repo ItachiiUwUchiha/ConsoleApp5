@@ -1,13 +1,13 @@
 ﻿string gaderypoluki(string clearText)
 {
     //zmienna do przechowywania zaszyfrowanego tekstu
+    //zapisujemy czysy tekst do dalszego szyfrowania 
     string cypherText = "";
     //zamien G na A i zapisz do nowej zmiennej 
     cypherText = clearText.Replace('G', '@');
-    //wez juz czesciowo zaszyfrowany tekst i zamien A na G
     //uzyj znaku posredniego aby zapobiec dwukrotnej zamianie jednej litery
-    cypherText = clearText.Replace('A', 'G');
-    cypherText = clearText.Replace('@', 'A');
+    cypherText = cypherText('A', 'G');
+    cypherText = cypherText('@', 'A');
     //d->e, e->d
     cypherText = cypherText.Replace('D', '@');
     cypherText = cypherText.Replace('E', 'D');
@@ -32,10 +32,43 @@
     return cypherText;
 }
 
+string gaderypoluki2(string clearText)
+{
+    string cypherText; = "";
+
+    foreach(char c in clearText)
+    {
+        //wykonaj poizsze instrukcje dla kazdej litery w tekscie zrodlowym
+        // c = jedna literka z tekstu 
+        switch(c)
+        {
+            case 'G':
+                cypherText += 'A';
+                break;
+            case 'A':
+                cypherText += "G";
+                break;
+                cypherText += 'E';
+                break;
+            case 'E':
+                cypherText += "D";
+                break;
+            case 'P':
+                cypherText += "O";
+                break;
+            case 'O':
+                cypherText += "P";
+                break;
+        }
+    }
+}
+
 
 //tekst do zaszyfrowania
 string clearText = "GADERYPOLUKI";
 //zaszyfruj uzywajac funkcji
 string cypherText = gaderypoluki(clearText);
 
-Console.WriteLine("Zaszyfrowany tekst: " + cypherText);
+Console.WriteLine("Zaszyfrowany tekst (metoda 1): " + cypherText);
+
+Console.WriteLine("Zaszyfrowany tekst (metoda 2): " + gaderypoluki2(clearText));
